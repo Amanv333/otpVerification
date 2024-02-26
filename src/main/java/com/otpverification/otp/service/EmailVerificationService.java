@@ -67,6 +67,7 @@ public class EmailVerificationService {
         Map<String,String> response = new HashMap<>();
         if (storeOtp!=null && storeOtp.equals(otp)){
             //valid otp
+            emailOtpMapping.remove(email);
             response.put("status","success");
             response.put("message","otp verified successfully");
             return response;
