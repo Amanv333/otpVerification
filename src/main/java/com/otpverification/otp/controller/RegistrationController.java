@@ -1,5 +1,6 @@
 package com.otpverification.otp.controller;
 
+import com.otpverification.otp.Dto.UserDto;
 import com.otpverification.otp.entity.User;
 import com.otpverification.otp.service.EmailService;
 import com.otpverification.otp.service.EmailVerificationService;
@@ -21,8 +22,8 @@ public class RegistrationController {
     private EmailVerificationService emailVerificationService;
 
     @PostMapping("/register")
-    public Map<String,String> registerUser(@RequestBody User user){
-        User registerUser = userService.registerUser(user);
+    public Map<String,String> registerUser(@RequestBody UserDto user){
+        userService.registerUser(user);
         emailService.sendOtp(user.getEmail());
         Map<String,String> response = new HashMap<>();
         response.put("status","success");
